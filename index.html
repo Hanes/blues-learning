@@ -243,6 +243,19 @@
     }
 
     .music-card:hover::before { transform: scaleX(1); }
+    .music-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(transparent, rgba(26,26,46,0.95));
+    }
+    .music-overlay h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
 
     .music-icon {
       font-size: 2.5rem;
@@ -631,18 +644,20 @@
   <div class="music-section-bg"></div>
   <h2 class="section-title">Blues 音樂分類</h2>
   <div class="music-grid">
-    <div class="music-card">
-      <h3>Jukin Blues</h3>
-      <div style="margin-top:1rem;">
-        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;">以下又分：</p>
-        <ul style="list-style:none;padding:0;">
-          <li>• Piedmont Blues</li>
-          <li>• Struttin</li>
-          <li>• Funky Butt</li>
-          <li>• Texas Shuffle</li>
-          <li>• Slow Drag</li>
-        </ul>
-      </div>
+    <div class="music-card" style="background-image:url('images/piedmont.jpg');">
+      <div class="music-overlay"><h3>Piedmont Blues</h3></div>
+    </div>
+    <div class="music-card" style="background-image:url('images/struttin.jpg');">
+      <div class="music-overlay"><h3>Struttin</h3></div>
+    </div>
+    <div class="music-card" style="background-image:url('images/funky_butt.jpg');">
+      <div class="music-overlay"><h3>Funky Butt</h3></div>
+    </div>
+    <div class="music-card" style="background-image:url('images/texas_shuffle.jpg');">
+      <div class="music-overlay"><h3>Texas Shuffle</h3></div>
+    </div>
+    <div class="music-card" style="background-image:url('images/slow_drag.jpg');">
+      <div class="music-overlay"><h3>Slow Drag</h3></div>
     </div>
   </div>
 </section>
