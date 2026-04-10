@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blues Journey - Hanes & Friends 的 Blues 學習記錄</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --bg-card: #0f0f23;
+            --accent-gold: #e6b800;
+            --accent-amber: #c9a227;
+            --text-cream: #f5f0e1;
+            --text-muted: #a0998a;
+            --border-subtle: rgba(230, 184, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Background texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(230, 184, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        nav .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            max-width: 500px;
+        }
+
+        .hero .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 2rem auto;
+        }
+
+        .hero .scroll-hint {
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Sections */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-gold);
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Notes Section */
+        .notes-section {
+            background: var(--bg-darker);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .notes-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .notes-section h3:first-child {
+            margin-top: 0;
+        }
+
+        .notes-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .notes-section li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-cream);
+            font-size: 0.95rem;
+        }
+
+        .notes-section li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--accent-amber);
+            font-size: 0.6rem;
+            top: 0.7rem;
+        }
+
+        /* Todo checkbox items */
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
+        }
+
+        .todo-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 4px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .todo-checkbox.checked {
+            background: var(--accent-gold);
+        }
+
+        .todo-checkbox.checked::after {
+            content: '✓';
+            color: var(--bg-dark);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">Blues Journey</a>
+            <ul>
+                <li><a href="#music">音樂分類</a></li>
+                <li><a href="#dance">舞蹈風格</a></li>
+                <li><a href="#practice">練習</a></li>
+                <li><a href="#pencas">PenCas</a></li>
+                <li><a href="#day2">第二天</a></li>
+                <li><a href="#bibi">Bibi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Blues Journey</h1>
+        <div class="divider"></div>
+        <p class="subtitle">Hanes & Friends 的 Blues 學習記錄</p>
+        <p class="scroll-hint">↓ 向下探索</p>
+    </header>
+
+    <section id="music" class="fade-in">
+        <h2 class="section-title">音樂分類</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Jukin Blues</h3>
+                <p>根源於密西西比三角洲的原始藍調</p>
+            </div>
+            <div class="card">
+                <h3>Piedmont Blues</h3>
+                <p>東北部鋼弦吉他風格，技巧華麗</p>
+            </div>
+            <div class="card">
+                <h3>Struttin</h3>
+                <p>充滿活力的城市藍調節奏</p>
+            </div>
+            <div class="card">
+                <h3>Funky Butt</h3>
+                <p>新奧爾良風格的節奏藍調</p>
+            </div>
+            <div class="card">
+                <h3>Texas Shuffle</h2>
+                <p>德州獨特的搖擺節奏</p>
+            </div>
+            <div class="card">
+                <h3>Slow Drag</h3>
+                <p>慢速親密的舞會舞曲</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dance" class="fade-in">
+        <h2 class="section-title">Blues Idiom Dance</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Savoy Walk</h3>
+                <p>以紐約 Savoy 舞廳命名的經典風格</p>
+            </div>
+            <div class="card">
+                <h3>Stride</h3>
+                <p>強調腳步技巧與節奏感</p>
+            </div>
+            <div class="card">
+                <h3>Strut</h3>
+                <p>自信有力的行進舞步</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="practice" class="fade-in">
+        <h2 class="section-title">練習</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>練 Solo</h3>
+                <p>個人技巧與音樂表達</p>
+            </div>
+            <div class="card">
+                <h3>練雙人</h3>
+                <p>Connection 與互動練習</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pencas" class="fade-in">
+        <h2 class="section-title">PenCas Workshop</h2>
+        
+        <div class="notes-section">
+            <div class="todo-item">
+                <div class="todo-checkbox" onclick="this.classList.toggle('checked')"></div>
+                <span>pencas workshop</span>
+            </div>
+            <ul>
+                <li>要持續有pulse</li>
+                <li>用地板方式轉</li>
+                <li>怎麼樣兩人可以變更好</li>
+                <li>找第三第四個人來看</li>
+                <li>Line dance 高速公路</li>
+                <li>中間可休息</li>
+                <li>傳遞訊息用身體連接的部份</li>
+            </ul>
+
+            <h3>核心概念</h3>
+            <ul>
+                <li>往重心往前</li>
+                <li>grounded</li>
+                <li>Connection 要有穿過對方的感覺</li>
+                <li>說話前先鈴聽</li>
+                <li>Fo要幫le 看路</li>
+            </ul>
+
+            <h3>姿態與連接</h3>
+            <ul>
+                <li>手</li>
+                <li>pencas</li>
+                <li>close embrace</li>
+                <li>要花時間</li>
+                <li>安靜在這一刻</li>
+                <li>多餘的東西在掩蓋自己的不安</li>
+                <li>接近妳原來的樣子，感受轉變</li>
+                <li>調整感覺</li>
+                <li>posture 高度來自於音樂</li>
+                <li>可以正面或側面connect</li>
+                <li>有些le 會傾斜，舒服是那邊，就用那邊connect</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="day2" class="fade-in">
+        <h2 class="section-title">第二天 Notes</h2>
+        
+        <div class="notes-section">
+            <h3>熱身與觉察</h3>
+            <ul>
+                <li>观查自己状态</li>
+                <li>tranisition</li>
+                <li>音樂進來</li>
+            </ul>
+
+            <h3>能量與驅動</h3>
+            <ul>
+                <li>想像能量球進來，放在中心</li>
+                <li>想著驅幹去驅動每個幾肉</li>
+                <li>先找到地版</li>
+                <li>感覺身體移動軌跡</li>
+                <li>走衡線</li>
+            </ul>
+
+            <h3>軌跡練習</h3>
+            <ul>
+                <li>軌跡</li>
+                <li>原形</li>
+                <li>要看到軌跡，重覆它</li>
+                <li>要清楚自己在做什麼</li>
+                <li>拒齒狀</li>
+                <li>8字型</li>
+            </ul>
+
+            <h3>音樂聆聽</h3>
+            <ul>
+                <li>讓音樂告訴妳要做什麼</li>
+                <li>多花點時間聽音樂</li>
+                <li>跨畫圓</li>
+                <li>順暢還是卡</li>
+                <li>用屁股畫圓</li>
+                <li>solo 卡住，檢查posture</li>
+                <li>上半身璇轉</li>
+            </ul>
+
+            <h3>切換時機</h3>
+            <ul>
+                <li>聽到音樂要妳換的時候才換</li>
+                <li>什麼時候想切換：段落、不同樂器切換的時後、節奏的轉換、call response</li>
+                <li>Take your time</li>
+                <li>把球分享</li>
+                <li>順勢而為</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="bibi" class="fade-in">
+        <h2 class="section-title">Bibi Workshop</h2>
+        <div class="notes-section">
+            <p style="color: var(--text-muted); font-style: italic;">筆記準備中...</p>
+        </div>
+    </section>
+
+    <section id="footwork" class="fade-in">
+        <h2 class="section-title">祇玄腳步</h2>
+        
+        <div class="notes-section">
+            <ul>
+                <li>思考落點腳的斜度</li>
+                <li>思考腳落點的腳尖腳根斜度</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>Blues Journey © 2026 · Hanes & Friends</p>
+    </footer>
+
+    <script>
+        // Fade in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Todo checkbox persistence
+        document.querySelectorAll('.todo-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                const key = 'todo-' + checkbox.parentElement.textContent.trim();
+                localStorage.setItem(key, checkbox.classList.contains('checked'));
+            });
+            // Restore state
+            const key = 'todo-' + checkbox.parentElement.textContent.trim();
+            if (localStorage.getItem(key) === 'true') {
+                checkbox.classList.add('checked');
+            }
+        });
+    </script>
+</body>
+</html>
