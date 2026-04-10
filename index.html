@@ -188,11 +188,30 @@
       font-size: 1.05rem;
     }
 
-    /* Music Cards */
+    /* Music Section */
+    #music {
+      position: relative;
+    }
+    
+    .music-section-bg {
+      position: absolute;
+      top: 50%;
+      right: -100px;
+      transform: translateY(-50%);
+      width: 350px;
+      height: 350px;
+      background: url('images/jazz_bar.jpg') center/cover;
+      border-radius: 50%;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    
     .music-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     .music-card {
@@ -275,11 +294,47 @@
 
     .style-image {
       height: 200px;
-      background: url('images/dancing_couple.jpg') center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
+      position: relative;
+    }
+    
+    .style-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      letter-spacing: 0.3em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    
+    .style-image.ballroom {
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95)), url('images/dancing_couple.jpg') center/cover;
+    }
+    
+    .style-image.chicago {
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95)), url('images/blues_band.jpg') center/cover;
+    }
+    
+    .style-image.detroit {
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95));
+    }
+    
+    .style-image.juke {
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95)), url('images/guitar_player.jpg') center/cover;
+    }
+    
+    .style-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(26, 26, 46, 0.9) 100%);
+    }
+    
+    .style-image .emoji-overlay {
+      display: none;
     }
 
     .style-content { padding: 1.5rem 2rem 2rem; }
@@ -300,6 +355,23 @@
     .practice-bg {
       background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(37, 37, 66, 0.5) 50%, var(--bg-dark) 100%);
       padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .practice-bg::before {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 450px;
+      background: url('images/jazz_piano.jpg') center/cover;
+      border-radius: 50%;
+      opacity: 0.05;
+      filter: blur(50px);
+      pointer-events: none;
     }
 
     .practice-grid {
@@ -341,9 +413,36 @@
     }
 
     /* Workshop Notes */
+    #workshop {
+      position: relative;
+    }
+    
     .workshop-container {
       max-width: 900px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .workshop-decoration {
+      position: absolute;
+      top: 100px;
+      left: -80px;
+      width: 200px;
+      height: 250px;
+      background: url('images/musician.jpg') center/cover;
+      border-radius: 20px;
+      opacity: 0.08;
+      transform: rotate(-5deg);
+      pointer-events: none;
+    }
+    
+    .workshop-decoration::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.1), transparent);
+      border-radius: 20px;
     }
 
     .accordion {
@@ -414,11 +513,22 @@
 
     /* Day 2 Notes */
     .day2-notes {
-      background: linear-gradient(135deg, rgba(230, 184, 0, 0.05), transparent);
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.05), transparent),
+                  url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&q=80') right/200px no-repeat;
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 2.5rem;
       margin-top: 2rem;
+      position: relative;
+    }
+    
+    .day2-notes::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 85% 50%, rgba(230, 184, 0, 0.06) 0%, transparent 50%);
+      border-radius: 20px;
+      pointer-events: none;
     }
 
     .day2-header {
@@ -518,6 +628,7 @@
 
 <!-- Music Categories -->
 <section id="music">
+  <div class="music-section-bg"></div>
   <h2 class="section-title">音樂分類</h2>
   <p class="section-subtitle">不同類型的Blues，訴說著不同的故事</p>
   <div class="music-grid">
@@ -566,28 +677,50 @@
   <p class="section-subtitle">每種風格都有其獨特的韻味與表達方式</p>
   <div class="styles-container">
     <div class="style-card">
-      <div class="style-image">💃</div>
+      <div class="style-image ballroom"></div>
       <div class="style-content">
         <h3>Ballroom Blues</h3>
         <p>優雅流暢的舞步，適合較慢的Blues音樂。強調身體的延展與情感表達，動作圓潤而連貫。</p>
       </div>
     </div>
     <div class="style-card">
-      <div class="style-image">🕺</div>
+      <div class="style-image chicago"></div>
       <div class="style-content">
         <h3>Chicago Style</h3>
         <p>受爵士樂影響的城市風格，有更多的踢踏與腳步變化。活力充沛，表情豐富。</p>
       </div>
     </div>
     <div class="style-card">
-      <div class="style-image">🌿</div>
+      <div class="style-image ballroom">
+        <span class="style-label">BALLROOM</span>
+      </div>
+      <div class="style-content">
+        <h3>Ballroom Blues</h3>
+        <p>優雅流暢的舞步，適合較慢的Blues音樂。強調身體的延展與情感表達，動作圓潤而連貫。</p>
+      </div>
+    </div>
+    <div class="style-card">
+      <div class="style-image chicago">
+        <span class="style-label">CHICAGO</span>
+      </div>
+      <div class="style-content">
+        <h3>Chicago Style</h3>
+        <p>受爵士樂影響的城市風格，有更多的踢踏與腳步變化。活力充沛，表情豐富。</p>
+      </div>
+    </div>
+    <div class="style-card">
+      <div class="style-image detroit">
+        <span class="style-label">DETROIT</span>
+      </div>
       <div class="style-content">
         <h3>DC Ballroom / Detroit</h3>
         <p>來自 Motor City 的優雅風格，腳步精準，姿態優美。強調兩人之間的連接與默契。</p>
       </div>
     </div>
     <div class="style-card">
-      <div class="style-image">🏠</div>
+      <div class="style-image juke">
+        <span class="style-label">JUKE JOINT</span>
+      </div>
       <div class="style-content">
         <h3>Juke Joint</h3>
         <p>最原始、最接地氣的Blues舞蹈。自由、即興，充滿了非洲舞的節奏感與爆發力。</p>
@@ -640,6 +773,7 @@
 <section id="workshop">
   <h2 class="section-title">Workshop 筆記</h2>
   <p class="section-subtitle">課堂上的要點記錄，幫助你持續進步</p>
+  <div class="workshop-decoration"></div>
   <div class="workshop-container">
     <div class="accordion">
       <div class="accordion-item">
