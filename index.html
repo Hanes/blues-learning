@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    
+
     :root {
       --bg-dark: #1a1a2e;
       --bg-card: #252542;
@@ -22,7 +22,7 @@
     }
 
     html { scroll-behavior: smooth; }
-    
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg-dark);
@@ -52,7 +52,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    
+
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
@@ -60,13 +60,13 @@
       font-weight: 700;
       letter-spacing: 1px;
     }
-    
+
     .nav-links {
       display: flex;
       gap: 2rem;
       list-style: none;
     }
-    
+
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
@@ -75,7 +75,7 @@
       transition: color 0.3s;
       letter-spacing: 0.5px;
     }
-    
+
     .nav-links a:hover { color: var(--accent); }
 
     /* Hero */
@@ -102,7 +102,7 @@
       background: url('images/blues_bar.jpg') center/cover;
       opacity: 0.4;
     }
-    
+
     .hero::after {
       content: '';
       position: absolute;
@@ -114,14 +114,14 @@
     }
 
     .hero-content { position: relative; z-index: 1; max-width: 800px; }
-    
+
     .hero h1 {
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       color: var(--accent);
       margin-bottom: 1.5rem;
       text-shadow: 0 4px 20px rgba(230, 184, 0, 0.3);
     }
-    
+
     .hero p {
       font-size: 1.2rem;
       color: var(--text-secondary);
@@ -129,14 +129,14 @@
       margin: 0 auto 2.5rem;
       font-weight: 300;
     }
-    
+
     .hero-cta {
       display: inline-flex;
       gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
     }
-    
+
     .btn {
       padding: 0.9rem 2rem;
       border-radius: 50px;
@@ -148,24 +148,24 @@
       border: none;
       font-family: inherit;
     }
-    
+
     .btn-primary {
       background: var(--accent);
       color: var(--bg-dark);
     }
-    
+
     .btn-primary:hover {
       background: var(--accent-dim);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(230, 184, 0, 0.3);
     }
-    
+
     .btn-secondary {
       background: transparent;
       color: var(--accent);
       border: 2px solid var(--accent);
     }
-    
+
     .btn-secondary:hover {
       background: rgba(230, 184, 0, 0.1);
       transform: translateY(-2px);
@@ -173,14 +173,14 @@
 
     /* Section Base */
     section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
-    
+
     .section-title {
       font-size: 2.5rem;
       text-align: center;
       margin-bottom: 1rem;
       color: var(--accent);
     }
-    
+
     .section-subtitle {
       text-align: center;
       color: var(--text-muted);
@@ -192,7 +192,7 @@
     #music {
       position: relative;
     }
-    
+
     .music-section-bg {
       position: absolute;
       top: 50%;
@@ -205,7 +205,7 @@
       opacity: 0.07;
       pointer-events: none;
     }
-    
+
     .music-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -299,7 +299,7 @@
       justify-content: center;
       position: relative;
     }
-    
+
     .style-label {
       font-family: 'Playfair Display', serif;
       font-size: 1.2rem;
@@ -309,30 +309,30 @@
       z-index: 1;
       text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
-    
+
     .style-image.ballroom {
       background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95)), url('images/dance_floor.jpg') center/cover;
     }
-    
+
     .style-image.chicago {
       background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95)), url('images/sax_player.jpg') center/cover;
     }
-    
+
     .style-image.detroit {
       background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95));
     }
-    
+
     .style-image.juke {
       background: linear-gradient(135deg, rgba(230, 184, 0, 0.15), rgba(26, 26, 46, 0.95)), url('images/blues_guitar.jpg') center/cover;
     }
-    
+
     .style-image::after {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, transparent 30%, rgba(26, 26, 46, 0.9) 100%);
     }
-    
+
     .style-image .emoji-overlay {
       display: none;
     }
@@ -358,7 +358,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .practice-bg::before {
       content: '';
       position: absolute;
@@ -416,14 +416,14 @@
     #workshop {
       position: relative;
     }
-    
+
     .workshop-container {
       max-width: 900px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
-    
+
     .workshop-decoration {
       position: absolute;
       top: 100px;
@@ -436,7 +436,7 @@
       transform: rotate(-5deg);
       pointer-events: none;
     }
-    
+
     .workshop-decoration::after {
       content: '';
       position: absolute;
@@ -521,7 +521,7 @@
       margin-top: 2rem;
       position: relative;
     }
-    
+
     .day2-notes::after {
       content: '';
       position: absolute;
@@ -591,13 +591,13 @@
     /* Responsive */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      
+
       section { padding: 3rem 1.5rem; }
-      
+
       .hero { padding: 5rem 1.5rem 3rem; }
-      
+
       .styles-container { grid-template-columns: 1fr; }
-      
+
       .day2-notes { padding: 1.5rem; }
     }
   </style>
@@ -618,7 +618,7 @@
 <section class="hero" id="home">
   <div class="hero-content">
     <h1>感受Blues的靈魂</h1>
-    <p>沉浸在藍調音樂與舞蹈的溫暖世界。從經典Chicago Blues到現代Slow Blues，探索每一種節奏背後的故事與情感。</p>
+    <p>沉浸在藍調音樂與舞蹈的溫暖世界。從經典Chicago Blues到現代Slow Blues,探索每一種節奏背後的故事與情感。</p>
     <div class="hero-cta">
       <a href="#styles" class="btn btn-primary">開始探索</a>
       <a href="#workshop" class="btn btn-secondary">查看筆記</a>
@@ -630,42 +630,42 @@
 <section id="music">
   <div class="music-section-bg"></div>
   <h2 class="section-title">音樂分類</h2>
-  <p class="section-subtitle">不同類型的Blues，訴說著不同的故事</p>
+  <p class="section-subtitle">不同類型的Blues,訴說著不同的故事</p>
   <div class="music-grid">
     <div class="music-card">
       <div class="music-icon">🎷</div>
       <h3>Classic Blues</h3>
-      <p>1920-1940年代的原始藍調，來自密西西比三角洲的深沉旋律與真摯情感。</p>
+      <p>1920-1940年代的原始藍調,來自密西西比三角洲的深沉旋律與真摯情感。</p>
       <span class="music-tag">BPM 60-80</span>
     </div>
     <div class="music-card">
       <div class="music-icon">🎺</div>
       <h3>Chicago Blues</h3>
-      <p>充滿力量的電吉他與大口徑薩克斯風，城市藍調的搖滾靈魂。</p>
+      <p>充滿力量的電吉他與大口徑薩克斯風,城市藍調的搖滾靈魂。</p>
       <span class="music-tag">BPM 80-110</span>
     </div>
     <div class="music-card">
       <div class="music-icon">🎻</div>
       <h3>Country Blues</h3>
-      <p>原聲吉他與口琴的純粹對話，鄉村生活的田園詩篇。</p>
+      <p>原聲吉他與口琴的純粹對話,鄉村生活的田園詩篇。</p>
       <span class="music-tag">BPM 70-90</span>
     </div>
     <div class="music-card">
       <div class="music-icon">💜</div>
       <h3>Soul Blues</h3>
-      <p>靈魂樂與福音音樂的融合，深情且富有感染力的情感表達。</p>
+      <p>靈魂樂與福音音樂的融合,深情且富有感染力的情感表達。</p>
       <span class="music-tag">BPM 75-100</span>
     </div>
     <div class="music-card">
       <div class="music-icon">🌙</div>
       <h3>Slow Blues</h3>
-      <p>緩慢而深沉，給予舞者充分的時間去感受每一個音符的重量。</p>
+      <p>緩慢而深沉,給予舞者充分的時間去感受每一個音符的重量。</p>
       <span class="music-tag">BPM 40-70</span>
     </div>
     <div class="music-card">
       <div class="music-icon">⚡</div>
       <h3>Jump Blues</h3>
-      <p>活力四射的節奏與歡快的氛圍，讓人不自覺跟著搖擺。</p>
+      <p>活力四射的節奏與歡快的氛圍,讓人不自覺跟著搖擺。</p>
       <span class="music-tag">BPM 130-160</span>
     </div>
   </div>
@@ -680,14 +680,14 @@
       <div class="style-image ballroom"></div>
       <div class="style-content">
         <h3>Ballroom Blues</h3>
-        <p>優雅流暢的舞步，適合較慢的Blues音樂。強調身體的延展與情感表達，動作圓潤而連貫。</p>
+        <p>優雅流暢的舞步,適合較慢的Blues音樂。強調身體的延展與情感表達,動作圓潤而連貫。</p>
       </div>
     </div>
     <div class="style-card">
       <div class="style-image chicago"></div>
       <div class="style-content">
         <h3>Chicago Style</h3>
-        <p>受爵士樂影響的城市風格，有更多的踢踏與腳步變化。活力充沛，表情豐富。</p>
+        <p>受爵士樂影響的城市風格,有更多的踢踏與腳步變化。活力充沛,表情豐富。</p>
       </div>
     </div>
     <div class="style-card">
@@ -696,7 +696,7 @@
       </div>
       <div class="style-content">
         <h3>Ballroom Blues</h3>
-        <p>優雅流暢的舞步，適合較慢的Blues音樂。強調身體的延展與情感表達，動作圓潤而連貫。</p>
+        <p>優雅流暢的舞步,適合較慢的Blues音樂。強調身體的延展與情感表達,動作圓潤而連貫。</p>
       </div>
     </div>
     <div class="style-card">
@@ -705,7 +705,7 @@
       </div>
       <div class="style-content">
         <h3>Chicago Style</h3>
-        <p>受爵士樂影響的城市風格，有更多的踢踏與腳步變化。活力充沛，表情豐富。</p>
+        <p>受爵士樂影響的城市風格,有更多的踢踏與腳步變化。活力充沛,表情豐富。</p>
       </div>
     </div>
     <div class="style-card">
@@ -714,7 +714,7 @@
       </div>
       <div class="style-content">
         <h3>DC Ballroom / Detroit</h3>
-        <p>來自 Motor City 的優雅風格，腳步精準，姿態優美。強調兩人之間的連接與默契。</p>
+        <p>來自 Motor City 的優雅風格,腳步精準,姿態優美。強調兩人之間的連接與默契。</p>
       </div>
     </div>
     <div class="style-card">
@@ -723,7 +723,7 @@
       </div>
       <div class="style-content">
         <h3>Juke Joint</h3>
-        <p>最原始、最接地氣的Blues舞蹈。自由、即興，充滿了非洲舞的節奏感與爆發力。</p>
+        <p>最原始、最接地氣的Blues舞蹈。自由、即興,充滿了非洲舞的節奏感與爆發力。</p>
       </div>
     </div>
   </div>
@@ -733,37 +733,37 @@
 <div class="practice-bg">
   <section id="practice">
     <h2 class="section-title">練習重點</h2>
-    <p class="section-subtitle">掌握這些核心要素，開啟你的Blues之旅</p>
+    <p class="section-subtitle">掌握這些核心要素,開啟你的Blues之旅</p>
     <div class="practice-grid">
       <div class="practice-item">
         <div class="practice-icon">🎯</div>
         <h4>回應音樂</h4>
-        <p>聆聽音樂中的情感，用身體回應每一個音符</p>
+        <p>聆聽音樂中的情感,用身體回應每一個音符</p>
       </div>
       <div class="practice-item">
         <div class="practice-icon">🤝</div>
         <h4>夥伴連接</h4>
-        <p>與舞伴的身體對話，建立無聲的默契</p>
+        <p>與舞伴的身體對話,建立無聲的默契</p>
       </div>
       <div class="practice-item">
         <div class="practice-icon">🌀</div>
         <h4>身體重心</h4>
-        <p>體驗深度重心移動，創造流動的舞蹈</p>
+        <p>體驗深度重心移動,創造流動的舞蹈</p>
       </div>
       <div class="practice-item">
         <div class="practice-icon">✊</div>
         <h4>即興表達</h4>
-        <p>放下既定舞步，釋放內心的情感與節奏</p>
+        <p>放下既定舞步,釋放內心的情感與節奏</p>
       </div>
       <div class="practice-item">
         <div class="practice-icon">👣</div>
         <h4>腳步控制</h4>
-        <p>精準的腳步與地板互動，聲音也是舞蹈的一部分</p>
+        <p>精準的腳步與地板互動,聲音也是舞蹈的一部分</p>
       </div>
       <div class="practice-item">
         <div class="practice-icon">😌</div>
         <h4>放鬆姿態</h4>
-        <p>保持身體的柔軟與開放，擁抱Blues的慵懶氛圍</p>
+        <p>保持身體的柔軟與開放,擁抱Blues的慵懶氛圍</p>
       </div>
     </div>
   </section>
@@ -772,60 +772,11 @@
 <!-- Workshop Notes -->
 <section id="workshop">
   <h2 class="section-title">Workshop 筆記</h2>
-  <p class="section-subtitle">課堂上的要點記錄，幫助你持續進步</p>
+  <p class="section-subtitle">課堂上的要點記錄,幫助你持續進步</p>
   <div class="workshop-decoration"></div>
   <div class="workshop-container">
-    <div class="accordion">
-      <div class="accordion-item">
-        <button class="accordion-header">
-          <span>第一課：Blues 的基礎</span>
-          <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-body">
-            <ul>
-              <li><strong>核心概念：</strong>Blues 不是關於完美，而是關於真實與情感表達</li>
-              <li><strong>音樂聆聽：</strong>先花 30 秒純粹聆聽音樂，感受氛圍再開始跳舞</li>
-              <li><strong>基本姿態：</strong>膝蓋微彎，重心在前腳掌，保持身體的彈性與準備狀態</li>
-              <li><strong>呼吸同步：</strong>用深呼吸來匹配音樂的長句子，讓舞步與呼吸合一</li>
-              <li><strong>眼神接觸：</strong>與舞伴建立眼神連接，增強情感傳遞</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <button class="accordion-header">
-          <span>第二課：重心移動與流動</span>
-          <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-body">
-            <ul>
-              <li><strong>Deep Weight Shift：</strong>將重心深深移到一隻腳，創造身体的傾斜與張力</li>
-              <li><strong>Fall & Recover：</strong>像不倒翁一樣傾倒與恢復，體驗失重與控制的快感</li>
-              <li><strong>Counterbalance：</strong>利用兩人身體的相互支撐，創造優雅的共舞状態</li>
-              <li><strong>Sway：</strong>慢速的左右搖擺，配合音樂的波動，營造浪漫氛圍</li>
-              <li><strong>Grounding：</strong>腳掌紮實踩地，感受與地板的連結</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <button class="accordion-header">
-          <span>第三課：即興技巧</span>
-          <span class="arrow">▼</span>
-        </button>
-        <div class="accordion-content">
-          <div class="accordion-body">
-            <ul>
-              <li><strong>Call & Response：</strong>一人帶動，一人回應，培養默契與輪流領導的意識</li>
-              <li><strong>Musicality：</strong>注意音樂的停頓、爆發點與旋律線，用動作回应這些元素</li>
-              <li><strong>Emotion First：</strong>在嘗試新舞步之前，先問自己：這首曲子讓你感受到什麼？</li>
-              <li><strong>Silences are ok：</strong>Blues 中的靜默同樣重要，有時不動比動更有力量</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div class="accordion" id="workshopAccordion">
+      <!-- Dynamic content loaded from content.json -->
     </div>
 
     <!-- Day 2 Notes -->
@@ -837,30 +788,32 @@
       <div class="notes-grid">
         <div class="note-card">
           <h4>🔄 旋轉技巧</h4>
-          <p>spot turn 與 continuous turn 的差異：定點旋轉適合快速方向改變，持續旋轉則創造華麗效果。記得用視線定點來避免眩暈。</p>
+          <p>spot turn 與 continuous turn 的差異:定點旋轉適合快速方向改變,持續旋轉則創造華麗效果。記得用視線定點來避免眩暈。</p>
         </div>
         <div class="note-card">
           <h4>🤝 夥伴連接練習</h4>
-          <p>閉眼走路練習：一人閉眼，一人引導。透過輕觸與身體壓力傳遞方向，建立更細緻的溝通方式。</p>
+          <p>閉眼走路練習:一人閉眼,一人引導。透過輕觸與身體壓力傳遞方向,建立更細緻的溝通方式。</p>
         </div>
         <div class="note-card">
           <h4>🎵 音樂結構</h4>
-          <p>典型的12小節 Blues 結構：每4小節為一個樂句。學會預測音樂走向，在正確的時機做對應的動作。</p>
+          <p>典型的12小節 Blues 結構:每4小節為一個樂句。學會預測音樂走向,在正確的時機做對應的動作。</p>
         </div>
         <div class="note-card">
           <h4>💫 姿態與框架</h4>
-          <p>保持手臂的自然垂感，不要過度用力。框架（Frame）應該是柔軟而有支撐力的，像是抱著一個大氣球。</p>
+          <p>保持手臂的自然垂感,不要過度用力。框架(Frame)應該是柔軟而有支撐力的,像是抱著一個大氣球。</p>
         </div>
         <div class="note-card">
           <h4>🧠 心理建設</h4>
-          <p>「犯錯」是學習的一部分。每次「錯誤」都是一次寶貴的資訊，告訴你什麼需要調整。</p>
+          <p>「犯錯」是學習的一部分。每次「錯誤」都是一次寶貴的資訊,告訴你什麼需要調整。</p>
         </div>
         <div class="note-card">
           <h4>📚 課後功課</h4>
-          <p>每天花10分鐘聽不同類型的Blues，嘗試不打拍子，純粹感受音樂情緒。推薦：Muddy Waters, Howlin' Wolf, Big Mama Thornton。</p>
+          <p>每天花10分鐘聽不同類型的Blues,嘗試不打拍子,純粹感受音樂情緒。推薦:Muddy Waters, Howlin' Wolf, Big Mama Thornton。</p>
         </div>
       </div>
     </div>
+    <!-- Dynamic Notes Container -->
+    <div id="dynamicNotes"></div>
   </div>
 </section>
 
@@ -869,18 +822,109 @@
 </footer>
 
 <script>
-  // Accordion functionality
-  document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const item = header.parentElement;
-      const isActive = item.classList.contains('active');
-      
-      // Close all
-      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
-      
-      // Toggle current (if wasn't active)
-      if (!isActive) item.classList.add('active');
+  // Load workshop notes from JSON
+  async function loadWorkshopNotes() {
+    const accordion = document.getElementById('workshopAccordion');
+
+    try {
+      const response = await fetch('content.json?t=' + Date.now());
+      if (response.ok) {
+        const data = await response.json();
+        const workshops = data.workshops || [];
+
+        if (workshops.length === 0) {
+          accordion.innerHTML = '<p style="color: var(--text-muted); text-align: center;">還沒有任何筆記</p>';
+          return;
+        }
+
+        // Sort by date descending
+        workshops.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        accordion.innerHTML = workshops.map(workshop => {
+          // Convert content to HTML list format
+          const contentItems = workshop.content.split('\n').filter(line => line.trim());
+          const contentHtml = contentItems.map(item => {
+            // Check if item has a colon separator
+            if (item.includes(':')) {
+              const [label, ...rest] = item.split(':');
+              return `<li><strong>${escapeHtml(label)}:</strong>${escapeHtml(rest.join(':'))}</li>`;
+            }
+            return `<li>${escapeHtml(item)}</li>`;
+          }).join('');
+
+          return `
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>${escapeHtml(workshop.title)}</span>
+                <span class="arrow">▼</span>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-body">
+                  <ul>${contentHtml}</ul>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Re-attach accordion event listeners
+        initAccordion();
+      }
+    } catch (error) {
+      console.log('Using default content or localStorage');
+      // Fallback: keep default content if JSON fails
+    }
+  }
+
+  // Load dynamic notes from localStorage
+  function loadDynamicNotes() {
+    const data = localStorage.getItem('blues_notes');
+    if (!data) return;
+    const notes = JSON.parse(data);
+    const container = document.getElementById('dynamicNotes');
+    if (!container || notes.length === 0) return;
+    let html = '<div style="margin-top:2rem;"><h3 style="font-family:Playfair Display,serif;color:#e6b800;margin-bottom:1rem;">📝 我的筆記</h3><div class="notes-grid">';
+    notes.forEach(note => {
+      html += '<div class="note-card"><h4>'+escapeHtml(note.title)+'</h4><ul style="list-style:none;padding:0;">';
+      note.items.forEach(item => { html += '<li style="padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">'+escapeHtml(item)+'</li>'; });
+      html += '</ul></div>';
     });
+    html += '</div></div>';
+    container.innerHTML = html;
+  }
+  
+  // Load workshop notes from localStorage
+  function loadWorkshopNotes() {
+    loadDynamicNotes();
+  }
+  
+  // Escape HTML
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  // Accordion functionality
+  function initAccordion() {
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all
+        document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+        
+        // Toggle current (if wasn't active)
+        if (!isActive) item.classList.add('active');
+      });
+    });
+  }
+  
+  // Initialize accordion on load
+  document.addEventListener('DOMContentLoaded', () => {
+    initAccordion();
+    loadWorkshopNotes();
   });
 
   // Smooth scroll for nav links

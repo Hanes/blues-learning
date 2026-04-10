@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blues Studio 管理後台</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #1a1a2e;
+      --bg-card: #252542;
+      --bg-hover: #2d2d4a;
+      --accent: #e6b800;
+      --accent-dim: #c9a000;
+      --text-primary: #f5f5f5;
+      --text-secondary: #b8b8c8;
+      --text-muted: #8888a0;
+      --border: rgba(230, 184, 0, 0.15);
+      --danger: #e74c3c;
+      --success: #27ae60;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    nav {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dim);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .card-actions button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .card-content {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .card-content ul {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .card-content li {
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .card-content li:last-child { border-bottom: none; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+    }
+
+    /* Password Screen */
+    .password-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .password-screen h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .password-screen input {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      text-align: center;
+      width: 300px;
+    }
+
+    .password-screen input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .password-screen p {
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .password-screen .error {
+      color: var(--danger);
+      margin-top: 1rem;
+    }
+
+    /* Tag */
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background: rgba(230, 184, 0, 0.2);
+      color: var(--accent);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Login button */
+    .login-btn {
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background: var(--accent);
+      color: var(--bg-dark);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+
+    .admin-hidden { display: none; }
+  </style>
+</head>
+<body>
+  <!-- Password Screen -->
+  <div id="passwordScreen" class="password-screen">
+    <h1>🔐 管理後台</h1>
+    <input type="password" id="passwordInput" placeholder="輸入密碼" onkeypress="if(event.key==='Enter')checkPassword()">
+    <p>預設密碼：blues123</p>
+    <button class="login-btn" onclick="checkPassword()">登入</button>
+    <p id="passwordError" class="error"></p>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="adminPanel" class="admin-hidden">
+    <nav>
+      <h1>🎸 Blues Studio 管理後台</h1>
+      <a href="index.html">← 返回網站</a>
+    </nav>
+
+    <div class="container">
+      <div class="header">
+        <h2>Workshop 筆記管理</h2>
+        <button class="btn btn-primary" onclick="openModal()">+ 新增筆記</button>
+      </div>
+
+      <div id="notesList"></div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Modal -->
+  <div id="noteModal" class="modal">
+    <div class="modal-content">
+      <h3 id="modalTitle">新增筆記</h3>
+      <form id="noteForm">
+        <input type="hidden" id="noteId">
+        <div class="form-group">
+          <label>標題</label>
+          <input type="text" id="noteTitle" required placeholder="例如：PenCas Workshop">
+        </div>
+        <div class="form-group">
+          <label>內容（每行一點）</label>
+          <textarea id="noteItems" placeholder="要持續有pulse&#10;用地板方式轉&#10;..."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">取消</button>
+          <button type="submit" class="btn btn-primary">儲存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = 'blues123';
+    let notes = [];
+
+    // Check password
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value;
+      if (input === PASSWORD) {
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('adminPanel').classList.remove('admin-hidden');
+        loadNotes();
+      } else {
+        document.getElementById('passwordError').textContent = '密碼錯誤';
+      }
+    }
+
+    // Load notes from localStorage
+    function loadNotes() {
+      const data = localStorage.getItem('blues_notes');
+      if (data) {
+        notes = JSON.parse(data);
+      } else {
+        // Initial default notes
+        notes = [
+          {
+            id: 1,
+            title: 'PenCas Workshop',
+            items: ['要持續有pulse', '用地板方式轉', 'Connection 要有穿過對方的感覺', '說話前先鈴聽', '安靜在這一刻']
+          },
+          {
+            id: 2,
+            title: '第二天 Notes',
+            items: ['观查自己状态', '音樂進來', '想像能量球進來，放在中心', '順勢而為']
+          }
+        ];
+        saveNotes();
+      }
+      renderNotes();
+    }
+
+    // Save to localStorage
+    function saveNotes() {
+      localStorage.setItem('blues_notes', JSON.stringify(notes));
+    }
+
+    // Render notes list
+    function renderNotes() {
+      const container = document.getElementById('notesList');
+      if (notes.length === 0) {
+        container.innerHTML = '<div class="empty">還沒有筆記，點擊上方按鈕新增</div>';
+        return;
+      }
+      container.innerHTML = notes.map(note => `
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">${escapeHtml(note.title)}</div>
+              <span class="tag">${note.items.length} 項</span>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary" onclick="editNote(${note.id})">編輯</button>
+              <button class="btn btn-danger" onclick="deleteNote(${note.id})">刪除</button>
+            </div>
+          </div>
+          <div class="card-content">
+            <ul>
+              ${note.items.map(item => `<li>${escapeHtml(item)}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Open modal
+    function openModal(id = null) {
+      document.getElementById('noteModal').classList.add('active');
+      document.getElementById('modalTitle').textContent = id ? '編輯筆記' : '新增筆記';
+      if (id) {
+        editNote(id);
+      } else {
+        document.getElementById('noteForm').reset();
+        document.getElementById('noteId').value = '';
+      }
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('noteModal').classList.remove('active');
+    }
+
+    // Edit note
+    function editNote(id) {
+      const note = notes.find(n => n.id === id);
+      if (!note) return;
+      document.getElementById('noteId').value = note.id;
+      document.getElementById('noteTitle').value = note.title;
+      document.getElementById('noteItems').value = note.items.join('\n');
+      document.getElementById('noteModal').classList.add('active');
+    }
+
+    // Delete note
+    function deleteNote(id) {
+      if (confirm('確定要刪除這筆記嗎？')) {
+        notes = notes.filter(n => n.id !== id);
+        saveNotes();
+        renderNotes();
+      }
+    }
+
+    // Form submit
+    document.getElementById('noteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('noteId').value;
+      const title = document.getElementById('noteTitle').value.trim();
+      const itemsText = document.getElementById('noteItems').value.trim();
+      const items = itemsText ? itemsText.split('\n').map(s => s.trim()).filter(s => s) : [];
+
+      if (id) {
+        // Update
+        const note = notes.find(n => n.id === parseInt(id));
+        if (note) {
+          note.title = title;
+          note.items = items;
+        }
+      } else {
+        // Create
+        notes.push({
+          id: Date.now(),
+          title,
+          items
+        });
+      }
+
+      saveNotes();
+      renderNotes();
+      closeModal();
+    });
+
+    // Escape HTML
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Close modal on outside click
+    document.getElementById('noteModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
+</body>
+</html>
